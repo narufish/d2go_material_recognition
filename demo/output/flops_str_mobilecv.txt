@@ -1,0 +1,2004 @@
+GeneralizedRCNN(
+  input_shapes=[[{'file_name': None, 'image_id': None, 'height': None, 'width': None, 'transforms': None, 'image': [3, 320, 207]}]], output_shapes=[{'instances': None}], nparams=5.191832, nflops=972.54952
+  (backbone): FBNetV2C4Backbone(
+    input_shapes=[[1, 3, 320, 207]], output_shapes={'trunk0': [1, 16, 160, 104], 'trunk1': [1, 24, 80, 52], 'trunk2': [1, 32, 40, 26], 'trunk3': [1, 112, 20, 13]}, nparams=0.961016, nflops=304.4512
+    (body): FBNetV2Backbone(
+      input_shapes=[[1, 3, 320, 207]], output_shapes={'trunk0': [1, 16, 160, 104], 'trunk1': [1, 24, 80, 52], 'trunk2': [1, 32, 40, 26], 'trunk3': [1, 112, 20, 13]}, nparams=0.961016, nflops=304.4512
+      (trunk0): Sequential(
+        input_shapes=[[1, 3, 320, 207]], output_shapes=[1, 16, 160, 104], nparams=0.001232, nflops=20.50048
+        (fbnetv2_0_0): ConvBNRelu(
+          input_shapes=[[1, 3, 320, 207]], output_shapes=[1, 16, 160, 104], nparams=0.000432, nflops=7.18848
+          (conv): Conv2d(
+            3, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1),
+            input_shapes=[[1, 3, 320, 207]], output_shapes=[1, 16, 160, 104], nparams=0.000432, nflops=7.18848
+          )
+          (bn): NaiveSyncBatchNorm(
+            16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+            input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.0, nflops=0.0
+          )
+          (relu): ReLU(
+            inplace=True,
+            input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.0, nflops=0.0
+          )
+        )
+        (fbnetv2_0_1): IRFBlock(
+          input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.0004, nflops=6.656
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.000144, nflops=2.39616
+            (conv): Conv2d(
+              16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=16, bias=False,
+              input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.000144, nflops=2.39616
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.000256, nflops=4.25984
+            (conv): Conv2d(
+              16, 16, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.000256, nflops=4.25984
+            )
+            (bn): NaiveSyncBatchNorm(
+              16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 16, 160, 104], [1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+        (fbnetv2_0_2): IRFBlock(
+          input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.0004, nflops=6.656
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.000144, nflops=2.39616
+            (conv): Conv2d(
+              16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=16, bias=False,
+              input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.000144, nflops=2.39616
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.000256, nflops=4.25984
+            (conv): Conv2d(
+              16, 16, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.000256, nflops=4.25984
+            )
+            (bn): NaiveSyncBatchNorm(
+              16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 16, 160, 104], [1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 16, 160, 104], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+      )
+      (trunk1): Sequential(
+        input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 24, 80, 52], nparams=0.019928, nflops=95.68
+        (fbnetv2_1_0): IRFBlock(
+          input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 24, 80, 52], nparams=0.00416, nflops=30.08512
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 64, 160, 104], nparams=0.001024, nflops=17.03936
+            (conv): Conv2d(
+              16, 64, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 16, 160, 104]], output_shapes=[1, 64, 160, 104], nparams=0.001024, nflops=17.03936
+            )
+            (bn): NaiveSyncBatchNorm(
+              64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 64, 160, 104]], output_shapes=[1, 64, 160, 104], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 64, 160, 104]], output_shapes=[1, 64, 160, 104], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 64, 160, 104]], output_shapes=[1, 64, 80, 52], nparams=0.0016, nflops=6.656
+            (conv): Conv2d(
+              64, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=64, bias=False,
+              input_shapes=[[1, 64, 160, 104]], output_shapes=[1, 64, 80, 52], nparams=0.0016, nflops=6.656
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 64, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.001536, nflops=6.38976
+            (conv): Conv2d(
+              64, 24, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 64, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.001536, nflops=6.38976
+            )
+            (bn): NaiveSyncBatchNorm(
+              24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.0, nflops=0.0
+            )
+          )
+        )
+        (fbnetv2_1_1): IRFBlock(
+          input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.005256, nflops=21.86496
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.001728, nflops=7.18848
+            (conv): Conv2d(
+              24, 72, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.001728, nflops=7.18848
+            )
+            (bn): NaiveSyncBatchNorm(
+              72, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.0018, nflops=7.488
+            (conv): Conv2d(
+              72, 72, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=72, bias=False,
+              input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.0018, nflops=7.488
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.001728, nflops=7.18848
+            (conv): Conv2d(
+              72, 24, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.001728, nflops=7.18848
+            )
+            (bn): NaiveSyncBatchNorm(
+              24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 24, 80, 52], [1, 24, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+        (fbnetv2_1_2): IRFBlock(
+          input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.005256, nflops=21.86496
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.001728, nflops=7.18848
+            (conv): Conv2d(
+              24, 72, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.001728, nflops=7.18848
+            )
+            (bn): NaiveSyncBatchNorm(
+              72, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.0018, nflops=7.488
+            (conv): Conv2d(
+              72, 72, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=72, bias=False,
+              input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.0018, nflops=7.488
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.001728, nflops=7.18848
+            (conv): Conv2d(
+              72, 24, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.001728, nflops=7.18848
+            )
+            (bn): NaiveSyncBatchNorm(
+              24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 24, 80, 52], [1, 24, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+        (fbnetv2_1_3): IRFBlock(
+          input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.005256, nflops=21.86496
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.001728, nflops=7.18848
+            (conv): Conv2d(
+              24, 72, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.001728, nflops=7.18848
+            )
+            (bn): NaiveSyncBatchNorm(
+              72, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.0018, nflops=7.488
+            (conv): Conv2d(
+              72, 72, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=72, bias=False,
+              input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 72, 80, 52], nparams=0.0018, nflops=7.488
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.001728, nflops=7.18848
+            (conv): Conv2d(
+              72, 24, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 72, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.001728, nflops=7.18848
+            )
+            (bn): NaiveSyncBatchNorm(
+              24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 24, 80, 52], [1, 24, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 24, 80, 52], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+      )
+      (trunk2): Sequential(
+        input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 32, 40, 26], nparams=0.047232, nflops=37.558272
+        (fbnetv2_2_0): IRFBlock(
+          input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 32, 40, 26], nparams=0.012384, nflops=15.379968
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 96, 80, 52], nparams=0.002304, nflops=9.58464
+            (conv): Conv2d(
+              24, 96, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 24, 80, 52]], output_shapes=[1, 96, 80, 52], nparams=0.002304, nflops=9.58464
+            )
+            (bn): NaiveSyncBatchNorm(
+              96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 96, 80, 52]], output_shapes=[1, 96, 80, 52], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 96, 80, 52]], output_shapes=[1, 96, 80, 52], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 96, 80, 52]], output_shapes=[1, 96, 40, 26], nparams=0.0024, nflops=2.496
+            (conv): Conv2d(
+              96, 96, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=96, bias=False,
+              input_shapes=[[1, 96, 80, 52]], output_shapes=[1, 96, 40, 26], nparams=0.0024, nflops=2.496
+            )
+          )
+          (se): SEModule(
+            input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.004608, nflops=0.104448
+            (avg_pool): AdaptiveAvgPool2d(
+              output_size=1,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 1, 1], nparams=0.0, nflops=0.09984
+            )
+            (se): Sequential(
+              input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 96, 1, 1], nparams=0.004608, nflops=0.004608
+              (0): ConvBNRelu(
+                input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 24, 1, 1], nparams=0.002304, nflops=0.002304
+                (conv): Conv2d(
+                  96, 24, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 24, 1, 1], nparams=0.002304, nflops=0.002304
+                )
+                (relu): ReLU(
+                  inplace=True,
+                  input_shapes=[[1, 24, 1, 1]], output_shapes=[1, 24, 1, 1], nparams=0.0, nflops=0.0
+                )
+              )
+              (1): Conv2d(
+                24, 96, kernel_size=(1, 1), stride=(1, 1),
+                input_shapes=[[1, 24, 1, 1]], output_shapes=[1, 96, 1, 1], nparams=0.002304, nflops=0.002304
+              )
+              (2): Sigmoid(input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 96, 1, 1], nparams=0.0, nflops=0.0)
+            )
+            (mul): TorchMultiply(
+              input_shapes=[[1, 96, 40, 26], [1, 96, 1, 1]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0
+              (mul_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.003072, nflops=3.19488
+            (conv): Conv2d(
+              96, 32, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.003072, nflops=3.19488
+            )
+            (bn): NaiveSyncBatchNorm(
+              32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.0, nflops=0.0
+            )
+          )
+        )
+        (fbnetv2_2_1): IRFBlock(
+          input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.011616, nflops=7.392768
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.003072, nflops=3.19488
+            (conv): Conv2d(
+              32, 96, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.003072, nflops=3.19488
+            )
+            (bn): NaiveSyncBatchNorm(
+              96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.000864, nflops=0.89856
+            (conv): Conv2d(
+              96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.000864, nflops=0.89856
+            )
+          )
+          (se): SEModule(
+            input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.004608, nflops=0.104448
+            (avg_pool): AdaptiveAvgPool2d(
+              output_size=1,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 1, 1], nparams=0.0, nflops=0.09984
+            )
+            (se): Sequential(
+              input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 96, 1, 1], nparams=0.004608, nflops=0.004608
+              (0): ConvBNRelu(
+                input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 24, 1, 1], nparams=0.002304, nflops=0.002304
+                (conv): Conv2d(
+                  96, 24, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 24, 1, 1], nparams=0.002304, nflops=0.002304
+                )
+                (relu): ReLU(
+                  inplace=True,
+                  input_shapes=[[1, 24, 1, 1]], output_shapes=[1, 24, 1, 1], nparams=0.0, nflops=0.0
+                )
+              )
+              (1): Conv2d(
+                24, 96, kernel_size=(1, 1), stride=(1, 1),
+                input_shapes=[[1, 24, 1, 1]], output_shapes=[1, 96, 1, 1], nparams=0.002304, nflops=0.002304
+              )
+              (2): Sigmoid(input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 96, 1, 1], nparams=0.0, nflops=0.0)
+            )
+            (mul): TorchMultiply(
+              input_shapes=[[1, 96, 40, 26], [1, 96, 1, 1]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0
+              (mul_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.003072, nflops=3.19488
+            (conv): Conv2d(
+              96, 32, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.003072, nflops=3.19488
+            )
+            (bn): NaiveSyncBatchNorm(
+              32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 32, 40, 26], [1, 32, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+        (fbnetv2_2_2): IRFBlock(
+          input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.011616, nflops=7.392768
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.003072, nflops=3.19488
+            (conv): Conv2d(
+              32, 96, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.003072, nflops=3.19488
+            )
+            (bn): NaiveSyncBatchNorm(
+              96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.000864, nflops=0.89856
+            (conv): Conv2d(
+              96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.000864, nflops=0.89856
+            )
+          )
+          (se): SEModule(
+            input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.004608, nflops=0.104448
+            (avg_pool): AdaptiveAvgPool2d(
+              output_size=1,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 1, 1], nparams=0.0, nflops=0.09984
+            )
+            (se): Sequential(
+              input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 96, 1, 1], nparams=0.004608, nflops=0.004608
+              (0): ConvBNRelu(
+                input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 24, 1, 1], nparams=0.002304, nflops=0.002304
+                (conv): Conv2d(
+                  96, 24, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 24, 1, 1], nparams=0.002304, nflops=0.002304
+                )
+                (relu): ReLU(
+                  inplace=True,
+                  input_shapes=[[1, 24, 1, 1]], output_shapes=[1, 24, 1, 1], nparams=0.0, nflops=0.0
+                )
+              )
+              (1): Conv2d(
+                24, 96, kernel_size=(1, 1), stride=(1, 1),
+                input_shapes=[[1, 24, 1, 1]], output_shapes=[1, 96, 1, 1], nparams=0.002304, nflops=0.002304
+              )
+              (2): Sigmoid(input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 96, 1, 1], nparams=0.0, nflops=0.0)
+            )
+            (mul): TorchMultiply(
+              input_shapes=[[1, 96, 40, 26], [1, 96, 1, 1]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0
+              (mul_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.003072, nflops=3.19488
+            (conv): Conv2d(
+              96, 32, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.003072, nflops=3.19488
+            )
+            (bn): NaiveSyncBatchNorm(
+              32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 32, 40, 26], [1, 32, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+        (fbnetv2_2_3): IRFBlock(
+          input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.011616, nflops=7.392768
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.003072, nflops=3.19488
+            (conv): Conv2d(
+              32, 96, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.003072, nflops=3.19488
+            )
+            (bn): NaiveSyncBatchNorm(
+              96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.000864, nflops=0.89856
+            (conv): Conv2d(
+              96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.000864, nflops=0.89856
+            )
+          )
+          (se): SEModule(
+            input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.004608, nflops=0.104448
+            (avg_pool): AdaptiveAvgPool2d(
+              output_size=1,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 1, 1], nparams=0.0, nflops=0.09984
+            )
+            (se): Sequential(
+              input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 96, 1, 1], nparams=0.004608, nflops=0.004608
+              (0): ConvBNRelu(
+                input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 24, 1, 1], nparams=0.002304, nflops=0.002304
+                (conv): Conv2d(
+                  96, 24, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 24, 1, 1], nparams=0.002304, nflops=0.002304
+                )
+                (relu): ReLU(
+                  inplace=True,
+                  input_shapes=[[1, 24, 1, 1]], output_shapes=[1, 24, 1, 1], nparams=0.0, nflops=0.0
+                )
+              )
+              (1): Conv2d(
+                24, 96, kernel_size=(1, 1), stride=(1, 1),
+                input_shapes=[[1, 24, 1, 1]], output_shapes=[1, 96, 1, 1], nparams=0.002304, nflops=0.002304
+              )
+              (2): Sigmoid(input_shapes=[[1, 96, 1, 1]], output_shapes=[1, 96, 1, 1], nparams=0.0, nflops=0.0)
+            )
+            (mul): TorchMultiply(
+              input_shapes=[[1, 96, 40, 26], [1, 96, 1, 1]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0
+              (mul_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 96, 40, 26], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.003072, nflops=3.19488
+            (conv): Conv2d(
+              96, 32, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 96, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.003072, nflops=3.19488
+            )
+            (bn): NaiveSyncBatchNorm(
+              32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 32, 40, 26], [1, 32, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 32, 40, 26], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+      )
+      (trunk3): Sequential(
+        input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 112, 20, 13], nparams=0.892624, nflops=150.712448
+        (fbnetv2_3_0): IRFBlock(
+          input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 64, 20, 13], nparams=0.015488, nflops=7.22176
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 128, 40, 26], nparams=0.004096, nflops=4.25984
+            (conv): Conv2d(
+              32, 128, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 32, 40, 26]], output_shapes=[1, 128, 40, 26], nparams=0.004096, nflops=4.25984
+            )
+            (bn): NaiveSyncBatchNorm(
+              128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 128, 40, 26]], output_shapes=[1, 128, 40, 26], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 128, 40, 26]], output_shapes=[1, 128, 40, 26], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 128, 40, 26]], output_shapes=[1, 128, 20, 13], nparams=0.0032, nflops=0.832
+            (conv): Conv2d(
+              128, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=128, bias=False,
+              input_shapes=[[1, 128, 40, 26]], output_shapes=[1, 128, 20, 13], nparams=0.0032, nflops=0.832
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 128, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.008192, nflops=2.12992
+            (conv): Conv2d(
+              128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 128, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.008192, nflops=2.12992
+            )
+            (bn): NaiveSyncBatchNorm(
+              64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+        )
+        (fbnetv2_3_1): IRFBlock(
+          input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.026304, nflops=6.83904
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.012288, nflops=3.19488
+            (conv): Conv2d(
+              64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.012288, nflops=3.19488
+            )
+            (bn): NaiveSyncBatchNorm(
+              192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.001728, nflops=0.44928
+            (conv): Conv2d(
+              192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False,
+              input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.001728, nflops=0.44928
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.012288, nflops=3.19488
+            (conv): Conv2d(
+              192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.012288, nflops=3.19488
+            )
+            (bn): NaiveSyncBatchNorm(
+              64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 64, 20, 13], [1, 64, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+        (fbnetv2_3_2): IRFBlock(
+          input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.026304, nflops=6.83904
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.012288, nflops=3.19488
+            (conv): Conv2d(
+              64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.012288, nflops=3.19488
+            )
+            (bn): NaiveSyncBatchNorm(
+              192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.001728, nflops=0.44928
+            (conv): Conv2d(
+              192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False,
+              input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.001728, nflops=0.44928
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.012288, nflops=3.19488
+            (conv): Conv2d(
+              192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.012288, nflops=3.19488
+            )
+            (bn): NaiveSyncBatchNorm(
+              64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 64, 20, 13], [1, 64, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+        (fbnetv2_3_3): IRFBlock(
+          input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.026304, nflops=6.83904
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.012288, nflops=3.19488
+            (conv): Conv2d(
+              64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.012288, nflops=3.19488
+            )
+            (bn): NaiveSyncBatchNorm(
+              192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.001728, nflops=0.44928
+            (conv): Conv2d(
+              192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False,
+              input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 192, 20, 13], nparams=0.001728, nflops=0.44928
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.012288, nflops=3.19488
+            (conv): Conv2d(
+              192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 192, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.012288, nflops=3.19488
+            )
+            (bn): NaiveSyncBatchNorm(
+              64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 64, 20, 13], [1, 64, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 64, 20, 13], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+        (fbnetv2_3_4): IRFBlock(
+          input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.084224, nflops=13.477888
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 256, 20, 13], nparams=0.016384, nflops=4.25984
+            (conv): Conv2d(
+              64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 64, 20, 13]], output_shapes=[1, 256, 20, 13], nparams=0.016384, nflops=4.25984
+            )
+            (bn): NaiveSyncBatchNorm(
+              256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 256, 20, 13]], output_shapes=[1, 256, 20, 13], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 256, 20, 13]], output_shapes=[1, 256, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 256, 20, 13]], output_shapes=[1, 256, 20, 13], nparams=0.0064, nflops=1.664
+            (conv): Conv2d(
+              256, 256, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=256, bias=False,
+              input_shapes=[[1, 256, 20, 13]], output_shapes=[1, 256, 20, 13], nparams=0.0064, nflops=1.664
+            )
+          )
+          (se): SEModule(
+            input_shapes=[[1, 256, 20, 13]], output_shapes=[1, 256, 20, 13], nparams=0.032768, nflops=0.099328
+            (avg_pool): AdaptiveAvgPool2d(
+              output_size=1,
+              input_shapes=[[1, 256, 20, 13]], output_shapes=[1, 256, 1, 1], nparams=0.0, nflops=0.06656
+            )
+            (se): Sequential(
+              input_shapes=[[1, 256, 1, 1]], output_shapes=[1, 256, 1, 1], nparams=0.032768, nflops=0.032768
+              (0): ConvBNRelu(
+                input_shapes=[[1, 256, 1, 1]], output_shapes=[1, 64, 1, 1], nparams=0.016384, nflops=0.016384
+                (conv): Conv2d(
+                  256, 64, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 256, 1, 1]], output_shapes=[1, 64, 1, 1], nparams=0.016384, nflops=0.016384
+                )
+                (relu): ReLU(
+                  inplace=True,
+                  input_shapes=[[1, 64, 1, 1]], output_shapes=[1, 64, 1, 1], nparams=0.0, nflops=0.0
+                )
+              )
+              (1): Conv2d(
+                64, 256, kernel_size=(1, 1), stride=(1, 1),
+                input_shapes=[[1, 64, 1, 1]], output_shapes=[1, 256, 1, 1], nparams=0.016384, nflops=0.016384
+              )
+              (2): Sigmoid(input_shapes=[[1, 256, 1, 1]], output_shapes=[1, 256, 1, 1], nparams=0.0, nflops=0.0)
+            )
+            (mul): TorchMultiply(
+              input_shapes=[[1, 256, 20, 13], [1, 256, 1, 1]], output_shapes=[1, 256, 20, 13], nparams=0.0, nflops=0.0
+              (mul_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 256, 20, 13]], output_shapes=[1, 256, 20, 13], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 256, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.028672, nflops=7.45472
+            (conv): Conv2d(
+              256, 112, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 256, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.028672, nflops=7.45472
+            )
+            (bn): NaiveSyncBatchNorm(
+              112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+        )
+        (fbnetv2_3_5): IRFBlock(
+          input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.1428, nflops=21.899136
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+            (conv): Conv2d(
+              112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+            )
+            (bn): NaiveSyncBatchNorm(
+              336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+            (conv): Conv2d(
+              336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+            )
+          )
+          (se): SEModule(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.059136, nflops=0.146496
+            (avg_pool): AdaptiveAvgPool2d(
+              output_size=1,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.08736
+            )
+            (se): Sequential(
+              input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.059136, nflops=0.059136
+              (0): ConvBNRelu(
+                input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                (conv): Conv2d(
+                  336, 88, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                )
+                (relu): ReLU(
+                  inplace=True,
+                  input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.0, nflops=0.0
+                )
+              )
+              (1): Conv2d(
+                88, 336, kernel_size=(1, 1), stride=(1, 1),
+                input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.029568, nflops=0.029568
+              )
+              (2): Sigmoid(input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.0)
+            )
+            (mul): TorchMultiply(
+              input_shapes=[[1, 336, 20, 13], [1, 336, 1, 1]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              (mul_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+            (conv): Conv2d(
+              336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+            )
+            (bn): NaiveSyncBatchNorm(
+              112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 112, 20, 13], [1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+        (fbnetv2_3_6): IRFBlock(
+          input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.1428, nflops=21.899136
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+            (conv): Conv2d(
+              112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+            )
+            (bn): NaiveSyncBatchNorm(
+              336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+            (conv): Conv2d(
+              336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+            )
+          )
+          (se): SEModule(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.059136, nflops=0.146496
+            (avg_pool): AdaptiveAvgPool2d(
+              output_size=1,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.08736
+            )
+            (se): Sequential(
+              input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.059136, nflops=0.059136
+              (0): ConvBNRelu(
+                input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                (conv): Conv2d(
+                  336, 88, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                )
+                (relu): ReLU(
+                  inplace=True,
+                  input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.0, nflops=0.0
+                )
+              )
+              (1): Conv2d(
+                88, 336, kernel_size=(1, 1), stride=(1, 1),
+                input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.029568, nflops=0.029568
+              )
+              (2): Sigmoid(input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.0)
+            )
+            (mul): TorchMultiply(
+              input_shapes=[[1, 336, 20, 13], [1, 336, 1, 1]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              (mul_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+            (conv): Conv2d(
+              336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+            )
+            (bn): NaiveSyncBatchNorm(
+              112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 112, 20, 13], [1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+        (fbnetv2_3_7): IRFBlock(
+          input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.1428, nflops=21.899136
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+            (conv): Conv2d(
+              112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+            )
+            (bn): NaiveSyncBatchNorm(
+              336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+            (conv): Conv2d(
+              336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+            )
+          )
+          (se): SEModule(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.059136, nflops=0.146496
+            (avg_pool): AdaptiveAvgPool2d(
+              output_size=1,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.08736
+            )
+            (se): Sequential(
+              input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.059136, nflops=0.059136
+              (0): ConvBNRelu(
+                input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                (conv): Conv2d(
+                  336, 88, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                )
+                (relu): ReLU(
+                  inplace=True,
+                  input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.0, nflops=0.0
+                )
+              )
+              (1): Conv2d(
+                88, 336, kernel_size=(1, 1), stride=(1, 1),
+                input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.029568, nflops=0.029568
+              )
+              (2): Sigmoid(input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.0)
+            )
+            (mul): TorchMultiply(
+              input_shapes=[[1, 336, 20, 13], [1, 336, 1, 1]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              (mul_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+            (conv): Conv2d(
+              336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+            )
+            (bn): NaiveSyncBatchNorm(
+              112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 112, 20, 13], [1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+        (fbnetv2_3_8): IRFBlock(
+          input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.1428, nflops=21.899136
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+            (conv): Conv2d(
+              112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+            )
+            (bn): NaiveSyncBatchNorm(
+              336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+            (conv): Conv2d(
+              336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+            )
+          )
+          (se): SEModule(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.059136, nflops=0.146496
+            (avg_pool): AdaptiveAvgPool2d(
+              output_size=1,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.08736
+            )
+            (se): Sequential(
+              input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.059136, nflops=0.059136
+              (0): ConvBNRelu(
+                input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                (conv): Conv2d(
+                  336, 88, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                )
+                (relu): ReLU(
+                  inplace=True,
+                  input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.0, nflops=0.0
+                )
+              )
+              (1): Conv2d(
+                88, 336, kernel_size=(1, 1), stride=(1, 1),
+                input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.029568, nflops=0.029568
+              )
+              (2): Sigmoid(input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.0)
+            )
+            (mul): TorchMultiply(
+              input_shapes=[[1, 336, 20, 13], [1, 336, 1, 1]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              (mul_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+            (conv): Conv2d(
+              336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+            )
+            (bn): NaiveSyncBatchNorm(
+              112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 112, 20, 13], [1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+        (fbnetv2_3_9): IRFBlock(
+          input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.1428, nflops=21.899136
+          (pw): ConvBNRelu(
+            input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+            (conv): Conv2d(
+              112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+            )
+            (bn): NaiveSyncBatchNorm(
+              336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+            )
+            (relu): ReLU(
+              inplace=True,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (dw): ConvBNRelu(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+            (conv): Conv2d(
+              336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+            )
+          )
+          (se): SEModule(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.059136, nflops=0.146496
+            (avg_pool): AdaptiveAvgPool2d(
+              output_size=1,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.08736
+            )
+            (se): Sequential(
+              input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.059136, nflops=0.059136
+              (0): ConvBNRelu(
+                input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                (conv): Conv2d(
+                  336, 88, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                )
+                (relu): ReLU(
+                  inplace=True,
+                  input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.0, nflops=0.0
+                )
+              )
+              (1): Conv2d(
+                88, 336, kernel_size=(1, 1), stride=(1, 1),
+                input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.029568, nflops=0.029568
+              )
+              (2): Sigmoid(input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.0)
+            )
+            (mul): TorchMultiply(
+              input_shapes=[[1, 336, 20, 13], [1, 336, 1, 1]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              (mul_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (pwl): ConvBNRelu(
+            input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+            (conv): Conv2d(
+              336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False,
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+            )
+            (bn): NaiveSyncBatchNorm(
+              112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+            )
+          )
+          (res_conn): TorchAdd(
+            input_shapes=[[1, 112, 20, 13], [1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+            (add_func): FloatFunctional(
+              (activation_post_process): Identity(input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0)
+            )
+          )
+        )
+      )
+    )
+  )
+  (proposal_generator): RPN(
+    input_shapes=[None, {'trunk0': [1, 16, 160, 104], 'trunk1': [1, 24, 80, 52], 'trunk2': [1, 32, 40, 26], 'trunk3': [1, 112, 20, 13]}, None], output_shapes=[[None], {}], nparams=0.7224, nflops=111.67968
+    (rpn_head): FBNetV2RpnHead(
+      input_shapes=[[[1, 112, 20, 13]]], output_shapes=[[[1, 15, 20, 13]], [[1, 60, 20, 13]]], nparams=0.7224, nflops=111.67968
+      (rpn_feature): FBNetModule(
+        input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.714, nflops=109.49568
+        (0): Sequential(
+          input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.714, nflops=109.49568
+          (fbnetv2_0_0): IRFBlock(
+            input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.1428, nflops=21.899136
+            (pw): ConvBNRelu(
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+              (conv): Conv2d(
+                112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+              )
+              (bn): NaiveSyncBatchNorm(
+                336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              )
+              (relu): ReLU(
+                inplace=True,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              )
+            )
+            (dw): ConvBNRelu(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+              (conv): Conv2d(
+                336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+              )
+            )
+            (se): SEModule(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.059136, nflops=0.146496
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.08736
+              )
+              (se): Sequential(
+                input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.059136, nflops=0.059136
+                (0): ConvBNRelu(
+                  input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                  (conv): Conv2d(
+                    336, 88, kernel_size=(1, 1), stride=(1, 1),
+                    input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                  )
+                  (relu): ReLU(
+                    inplace=True,
+                    input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.0, nflops=0.0
+                  )
+                )
+                (1): Conv2d(
+                  88, 336, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.029568, nflops=0.029568
+                )
+                (2): Sigmoid(input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.0)
+              )
+              (mul): TorchMultiply(
+                input_shapes=[[1, 336, 20, 13], [1, 336, 1, 1]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+                (mul_func): FloatFunctional(
+                  (activation_post_process): Identity(input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+              (conv): Conv2d(
+                336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+              )
+              (bn): NaiveSyncBatchNorm(
+                112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+              )
+            )
+            (res_conn): TorchAdd(
+              input_shapes=[[1, 112, 20, 13], [1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+              (add_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (fbnetv2_0_1): IRFBlock(
+            input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.1428, nflops=21.899136
+            (pw): ConvBNRelu(
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+              (conv): Conv2d(
+                112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+              )
+              (bn): NaiveSyncBatchNorm(
+                336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              )
+              (relu): ReLU(
+                inplace=True,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              )
+            )
+            (dw): ConvBNRelu(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+              (conv): Conv2d(
+                336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+              )
+            )
+            (se): SEModule(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.059136, nflops=0.146496
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.08736
+              )
+              (se): Sequential(
+                input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.059136, nflops=0.059136
+                (0): ConvBNRelu(
+                  input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                  (conv): Conv2d(
+                    336, 88, kernel_size=(1, 1), stride=(1, 1),
+                    input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                  )
+                  (relu): ReLU(
+                    inplace=True,
+                    input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.0, nflops=0.0
+                  )
+                )
+                (1): Conv2d(
+                  88, 336, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.029568, nflops=0.029568
+                )
+                (2): Sigmoid(input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.0)
+              )
+              (mul): TorchMultiply(
+                input_shapes=[[1, 336, 20, 13], [1, 336, 1, 1]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+                (mul_func): FloatFunctional(
+                  (activation_post_process): Identity(input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+              (conv): Conv2d(
+                336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+              )
+              (bn): NaiveSyncBatchNorm(
+                112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+              )
+            )
+            (res_conn): TorchAdd(
+              input_shapes=[[1, 112, 20, 13], [1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+              (add_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (fbnetv2_0_2): IRFBlock(
+            input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.1428, nflops=21.899136
+            (pw): ConvBNRelu(
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+              (conv): Conv2d(
+                112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+              )
+              (bn): NaiveSyncBatchNorm(
+                336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              )
+              (relu): ReLU(
+                inplace=True,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              )
+            )
+            (dw): ConvBNRelu(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+              (conv): Conv2d(
+                336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+              )
+            )
+            (se): SEModule(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.059136, nflops=0.146496
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.08736
+              )
+              (se): Sequential(
+                input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.059136, nflops=0.059136
+                (0): ConvBNRelu(
+                  input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                  (conv): Conv2d(
+                    336, 88, kernel_size=(1, 1), stride=(1, 1),
+                    input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                  )
+                  (relu): ReLU(
+                    inplace=True,
+                    input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.0, nflops=0.0
+                  )
+                )
+                (1): Conv2d(
+                  88, 336, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.029568, nflops=0.029568
+                )
+                (2): Sigmoid(input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.0)
+              )
+              (mul): TorchMultiply(
+                input_shapes=[[1, 336, 20, 13], [1, 336, 1, 1]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+                (mul_func): FloatFunctional(
+                  (activation_post_process): Identity(input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+              (conv): Conv2d(
+                336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+              )
+              (bn): NaiveSyncBatchNorm(
+                112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+              )
+            )
+            (res_conn): TorchAdd(
+              input_shapes=[[1, 112, 20, 13], [1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+              (add_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (fbnetv2_0_3): IRFBlock(
+            input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.1428, nflops=21.899136
+            (pw): ConvBNRelu(
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+              (conv): Conv2d(
+                112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+              )
+              (bn): NaiveSyncBatchNorm(
+                336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              )
+              (relu): ReLU(
+                inplace=True,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              )
+            )
+            (dw): ConvBNRelu(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+              (conv): Conv2d(
+                336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+              )
+            )
+            (se): SEModule(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.059136, nflops=0.146496
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.08736
+              )
+              (se): Sequential(
+                input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.059136, nflops=0.059136
+                (0): ConvBNRelu(
+                  input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                  (conv): Conv2d(
+                    336, 88, kernel_size=(1, 1), stride=(1, 1),
+                    input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                  )
+                  (relu): ReLU(
+                    inplace=True,
+                    input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.0, nflops=0.0
+                  )
+                )
+                (1): Conv2d(
+                  88, 336, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.029568, nflops=0.029568
+                )
+                (2): Sigmoid(input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.0)
+              )
+              (mul): TorchMultiply(
+                input_shapes=[[1, 336, 20, 13], [1, 336, 1, 1]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+                (mul_func): FloatFunctional(
+                  (activation_post_process): Identity(input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+              (conv): Conv2d(
+                336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+              )
+              (bn): NaiveSyncBatchNorm(
+                112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+              )
+            )
+            (res_conn): TorchAdd(
+              input_shapes=[[1, 112, 20, 13], [1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+              (add_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (fbnetv2_0_4): IRFBlock(
+            input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.1428, nflops=21.899136
+            (pw): ConvBNRelu(
+              input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+              (conv): Conv2d(
+                112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.037632, nflops=9.78432
+              )
+              (bn): NaiveSyncBatchNorm(
+                336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              )
+              (relu): ReLU(
+                inplace=True,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+              )
+            )
+            (dw): ConvBNRelu(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+              (conv): Conv2d(
+                336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0084, nflops=2.184
+              )
+            )
+            (se): SEModule(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.059136, nflops=0.146496
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.08736
+              )
+              (se): Sequential(
+                input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.059136, nflops=0.059136
+                (0): ConvBNRelu(
+                  input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                  (conv): Conv2d(
+                    336, 88, kernel_size=(1, 1), stride=(1, 1),
+                    input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.029568, nflops=0.029568
+                  )
+                  (relu): ReLU(
+                    inplace=True,
+                    input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 88, 1, 1], nparams=0.0, nflops=0.0
+                  )
+                )
+                (1): Conv2d(
+                  88, 336, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[1, 88, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.029568, nflops=0.029568
+                )
+                (2): Sigmoid(input_shapes=[[1, 336, 1, 1]], output_shapes=[1, 336, 1, 1], nparams=0.0, nflops=0.0)
+              )
+              (mul): TorchMultiply(
+                input_shapes=[[1, 336, 20, 13], [1, 336, 1, 1]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0
+                (mul_func): FloatFunctional(
+                  (activation_post_process): Identity(input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 336, 20, 13], nparams=0.0, nflops=0.0)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+              (conv): Conv2d(
+                336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[1, 336, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.037632, nflops=9.78432
+              )
+              (bn): NaiveSyncBatchNorm(
+                112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+              )
+            )
+            (res_conn): TorchAdd(
+              input_shapes=[[1, 112, 20, 13], [1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0
+              (add_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 112, 20, 13], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+        )
+      )
+      (rpn_regressor): RPNHeadConvRegressor(
+        input_shapes=[[[1, 112, 20, 13]]], output_shapes=[[[1, 15, 20, 13]], [[1, 60, 20, 13]]], nparams=0.0084, nflops=2.184
+        (cls_logits): Conv2d(
+          112, 15, kernel_size=(1, 1), stride=(1, 1),
+          input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 15, 20, 13], nparams=0.00168, nflops=0.4368
+        )
+        (bbox_pred): Conv2d(
+          112, 60, kernel_size=(1, 1), stride=(1, 1),
+          input_shapes=[[1, 112, 20, 13]], output_shapes=[1, 60, 20, 13], nparams=0.00672, nflops=1.7472
+        )
+      )
+    )
+    (anchor_generator): DefaultAnchorGenerator(
+      input_shapes=[[[1, 112, 20, 13]]], output_shapes=[None], nparams=0.0, nflops=0.0
+      (cell_anchors): BufferList()
+    )
+  )
+  (roi_heads): StandardROIHeads(
+    input_shapes=[None, {'trunk0': [1, 16, 160, 104], 'trunk1': [1, 24, 80, 52], 'trunk2': [1, 32, 40, 26], 'trunk3': [1, 112, 20, 13]}, [None], None], output_shapes=[[None], {}], nparams=3.508416, nflops=556.41864
+    (box_pooler): ROIPooler(
+      input_shapes=[[[1, 112, 20, 13]], [None]], output_shapes=[30, 112, 6, 6], nparams=0.0, nflops=0.0
+      (level_poolers): ModuleList(
+        (0): ROIAlign(output_size=(6, 6), spatial_scale=0.0625, sampling_ratio=0, aligned=True)
+      )
+    )
+    (box_head): FBNetV2RoIBoxHead(
+      input_shapes=[[30, 112, 6, 6]], output_shapes=[30, 200, 1, 1], nparams=3.507216, nflops=556.38264
+      (roi_box_conv): FBNetModule(
+        input_shapes=[[30, 112, 6, 6]], output_shapes=[30, 200, 3, 3], nparams=3.507216, nflops=556.32864
+        (0): Sequential(
+          input_shapes=[[30, 112, 6, 6]], output_shapes=[30, 200, 3, 3], nparams=3.507216, nflops=556.32864
+          (fbnetv2_0_0): IRFBlock(
+            input_shapes=[[30, 112, 6, 6]], output_shapes=[30, 184, 3, 3], nparams=0.24416, nflops=82.60224
+            (pw): ConvBNRelu(
+              input_shapes=[[30, 112, 6, 6]], output_shapes=[30, 448, 6, 6], nparams=0.050176, nflops=54.19008
+              (conv): Conv2d(
+                112, 448, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[30, 112, 6, 6]], output_shapes=[30, 448, 6, 6], nparams=0.050176, nflops=54.19008
+              )
+              (bn): NaiveSyncBatchNorm(
+                448, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[30, 448, 6, 6]], output_shapes=[30, 448, 6, 6], nparams=0.0, nflops=0.0
+              )
+              (relu): ReLU(
+                inplace=True,
+                input_shapes=[[30, 448, 6, 6]], output_shapes=[30, 448, 6, 6], nparams=0.0, nflops=0.0
+              )
+            )
+            (dw): ConvBNRelu(
+              input_shapes=[[30, 448, 6, 6]], output_shapes=[30, 448, 3, 3], nparams=0.0112, nflops=3.024
+              (conv): Conv2d(
+                448, 448, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=448, bias=False,
+                input_shapes=[[30, 448, 6, 6]], output_shapes=[30, 448, 3, 3], nparams=0.0112, nflops=3.024
+              )
+            )
+            (se): SEModule(
+              input_shapes=[[30, 448, 3, 3]], output_shapes=[30, 448, 3, 3], nparams=0.100352, nflops=3.13152
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1,
+                input_shapes=[[30, 448, 3, 3]], output_shapes=[30, 448, 1, 1], nparams=0.0, nflops=0.12096
+              )
+              (se): Sequential(
+                input_shapes=[[30, 448, 1, 1]], output_shapes=[30, 448, 1, 1], nparams=0.100352, nflops=3.01056
+                (0): ConvBNRelu(
+                  input_shapes=[[30, 448, 1, 1]], output_shapes=[30, 112, 1, 1], nparams=0.050176, nflops=1.50528
+                  (conv): Conv2d(
+                    448, 112, kernel_size=(1, 1), stride=(1, 1),
+                    input_shapes=[[30, 448, 1, 1]], output_shapes=[30, 112, 1, 1], nparams=0.050176, nflops=1.50528
+                  )
+                  (relu): ReLU(
+                    inplace=True,
+                    input_shapes=[[30, 112, 1, 1]], output_shapes=[30, 112, 1, 1], nparams=0.0, nflops=0.0
+                  )
+                )
+                (1): Conv2d(
+                  112, 448, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[30, 112, 1, 1]], output_shapes=[30, 448, 1, 1], nparams=0.050176, nflops=1.50528
+                )
+                (2): Sigmoid(input_shapes=[[30, 448, 1, 1]], output_shapes=[30, 448, 1, 1], nparams=0.0, nflops=0.0)
+              )
+              (mul): TorchMultiply(
+                input_shapes=[[30, 448, 3, 3], [30, 448, 1, 1]], output_shapes=[30, 448, 3, 3], nparams=0.0, nflops=0.0
+                (mul_func): FloatFunctional(
+                  (activation_post_process): Identity(input_shapes=[[30, 448, 3, 3]], output_shapes=[30, 448, 3, 3], nparams=0.0, nflops=0.0)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              input_shapes=[[30, 448, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.082432, nflops=22.25664
+              (conv): Conv2d(
+                448, 184, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[30, 448, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.082432, nflops=22.25664
+              )
+              (bn): NaiveSyncBatchNorm(
+                184, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.0, nflops=0.0
+              )
+            )
+          )
+          (fbnetv2_0_1): IRFBlock(
+            input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.54832, nflops=83.2416
+            (pw): ConvBNRelu(
+              input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.135424, nflops=36.56448
+              (conv): Conv2d(
+                184, 736, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.135424, nflops=36.56448
+              )
+              (bn): NaiveSyncBatchNorm(
+                736, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0
+              )
+              (relu): ReLU(
+                inplace=True,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0
+              )
+            )
+            (dw): ConvBNRelu(
+              input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.006624, nflops=1.78848
+              (conv): Conv2d(
+                736, 736, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=736, bias=False,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.006624, nflops=1.78848
+              )
+            )
+            (se): SEModule(
+              input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.270848, nflops=8.32416
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 1, 1], nparams=0.0, nflops=0.19872
+              )
+              (se): Sequential(
+                input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 736, 1, 1], nparams=0.270848, nflops=8.12544
+                (0): ConvBNRelu(
+                  input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 184, 1, 1], nparams=0.135424, nflops=4.06272
+                  (conv): Conv2d(
+                    736, 184, kernel_size=(1, 1), stride=(1, 1),
+                    input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 184, 1, 1], nparams=0.135424, nflops=4.06272
+                  )
+                  (relu): ReLU(
+                    inplace=True,
+                    input_shapes=[[30, 184, 1, 1]], output_shapes=[30, 184, 1, 1], nparams=0.0, nflops=0.0
+                  )
+                )
+                (1): Conv2d(
+                  184, 736, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[30, 184, 1, 1]], output_shapes=[30, 736, 1, 1], nparams=0.135424, nflops=4.06272
+                )
+                (2): Sigmoid(input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 736, 1, 1], nparams=0.0, nflops=0.0)
+              )
+              (mul): TorchMultiply(
+                input_shapes=[[30, 736, 3, 3], [30, 736, 1, 1]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0
+                (mul_func): FloatFunctional(
+                  (activation_post_process): Identity(input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.135424, nflops=36.56448
+              (conv): Conv2d(
+                736, 184, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.135424, nflops=36.56448
+              )
+              (bn): NaiveSyncBatchNorm(
+                184, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.0, nflops=0.0
+              )
+            )
+            (res_conn): TorchAdd(
+              input_shapes=[[30, 184, 3, 3], [30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.0, nflops=0.0
+              (add_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (fbnetv2_0_2): IRFBlock(
+            input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.54832, nflops=83.2416
+            (pw): ConvBNRelu(
+              input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.135424, nflops=36.56448
+              (conv): Conv2d(
+                184, 736, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.135424, nflops=36.56448
+              )
+              (bn): NaiveSyncBatchNorm(
+                736, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0
+              )
+              (relu): ReLU(
+                inplace=True,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0
+              )
+            )
+            (dw): ConvBNRelu(
+              input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.006624, nflops=1.78848
+              (conv): Conv2d(
+                736, 736, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=736, bias=False,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.006624, nflops=1.78848
+              )
+            )
+            (se): SEModule(
+              input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.270848, nflops=8.32416
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 1, 1], nparams=0.0, nflops=0.19872
+              )
+              (se): Sequential(
+                input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 736, 1, 1], nparams=0.270848, nflops=8.12544
+                (0): ConvBNRelu(
+                  input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 184, 1, 1], nparams=0.135424, nflops=4.06272
+                  (conv): Conv2d(
+                    736, 184, kernel_size=(1, 1), stride=(1, 1),
+                    input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 184, 1, 1], nparams=0.135424, nflops=4.06272
+                  )
+                  (relu): ReLU(
+                    inplace=True,
+                    input_shapes=[[30, 184, 1, 1]], output_shapes=[30, 184, 1, 1], nparams=0.0, nflops=0.0
+                  )
+                )
+                (1): Conv2d(
+                  184, 736, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[30, 184, 1, 1]], output_shapes=[30, 736, 1, 1], nparams=0.135424, nflops=4.06272
+                )
+                (2): Sigmoid(input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 736, 1, 1], nparams=0.0, nflops=0.0)
+              )
+              (mul): TorchMultiply(
+                input_shapes=[[30, 736, 3, 3], [30, 736, 1, 1]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0
+                (mul_func): FloatFunctional(
+                  (activation_post_process): Identity(input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.135424, nflops=36.56448
+              (conv): Conv2d(
+                736, 184, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.135424, nflops=36.56448
+              )
+              (bn): NaiveSyncBatchNorm(
+                184, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.0, nflops=0.0
+              )
+            )
+            (res_conn): TorchAdd(
+              input_shapes=[[30, 184, 3, 3], [30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.0, nflops=0.0
+              (add_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (fbnetv2_0_3): IRFBlock(
+            input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.54832, nflops=83.2416
+            (pw): ConvBNRelu(
+              input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.135424, nflops=36.56448
+              (conv): Conv2d(
+                184, 736, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.135424, nflops=36.56448
+              )
+              (bn): NaiveSyncBatchNorm(
+                736, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0
+              )
+              (relu): ReLU(
+                inplace=True,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0
+              )
+            )
+            (dw): ConvBNRelu(
+              input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.006624, nflops=1.78848
+              (conv): Conv2d(
+                736, 736, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=736, bias=False,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.006624, nflops=1.78848
+              )
+            )
+            (se): SEModule(
+              input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.270848, nflops=8.32416
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 1, 1], nparams=0.0, nflops=0.19872
+              )
+              (se): Sequential(
+                input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 736, 1, 1], nparams=0.270848, nflops=8.12544
+                (0): ConvBNRelu(
+                  input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 184, 1, 1], nparams=0.135424, nflops=4.06272
+                  (conv): Conv2d(
+                    736, 184, kernel_size=(1, 1), stride=(1, 1),
+                    input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 184, 1, 1], nparams=0.135424, nflops=4.06272
+                  )
+                  (relu): ReLU(
+                    inplace=True,
+                    input_shapes=[[30, 184, 1, 1]], output_shapes=[30, 184, 1, 1], nparams=0.0, nflops=0.0
+                  )
+                )
+                (1): Conv2d(
+                  184, 736, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[30, 184, 1, 1]], output_shapes=[30, 736, 1, 1], nparams=0.135424, nflops=4.06272
+                )
+                (2): Sigmoid(input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 736, 1, 1], nparams=0.0, nflops=0.0)
+              )
+              (mul): TorchMultiply(
+                input_shapes=[[30, 736, 3, 3], [30, 736, 1, 1]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0
+                (mul_func): FloatFunctional(
+                  (activation_post_process): Identity(input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.135424, nflops=36.56448
+              (conv): Conv2d(
+                736, 184, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.135424, nflops=36.56448
+              )
+              (bn): NaiveSyncBatchNorm(
+                184, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.0, nflops=0.0
+              )
+            )
+            (res_conn): TorchAdd(
+              input_shapes=[[30, 184, 3, 3], [30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.0, nflops=0.0
+              (add_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (fbnetv2_0_4): IRFBlock(
+            input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.54832, nflops=83.2416
+            (pw): ConvBNRelu(
+              input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.135424, nflops=36.56448
+              (conv): Conv2d(
+                184, 736, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.135424, nflops=36.56448
+              )
+              (bn): NaiveSyncBatchNorm(
+                736, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0
+              )
+              (relu): ReLU(
+                inplace=True,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0
+              )
+            )
+            (dw): ConvBNRelu(
+              input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.006624, nflops=1.78848
+              (conv): Conv2d(
+                736, 736, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=736, bias=False,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.006624, nflops=1.78848
+              )
+            )
+            (se): SEModule(
+              input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.270848, nflops=8.32416
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 1, 1], nparams=0.0, nflops=0.19872
+              )
+              (se): Sequential(
+                input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 736, 1, 1], nparams=0.270848, nflops=8.12544
+                (0): ConvBNRelu(
+                  input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 184, 1, 1], nparams=0.135424, nflops=4.06272
+                  (conv): Conv2d(
+                    736, 184, kernel_size=(1, 1), stride=(1, 1),
+                    input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 184, 1, 1], nparams=0.135424, nflops=4.06272
+                  )
+                  (relu): ReLU(
+                    inplace=True,
+                    input_shapes=[[30, 184, 1, 1]], output_shapes=[30, 184, 1, 1], nparams=0.0, nflops=0.0
+                  )
+                )
+                (1): Conv2d(
+                  184, 736, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[30, 184, 1, 1]], output_shapes=[30, 736, 1, 1], nparams=0.135424, nflops=4.06272
+                )
+                (2): Sigmoid(input_shapes=[[30, 736, 1, 1]], output_shapes=[30, 736, 1, 1], nparams=0.0, nflops=0.0)
+              )
+              (mul): TorchMultiply(
+                input_shapes=[[30, 736, 3, 3], [30, 736, 1, 1]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0
+                (mul_func): FloatFunctional(
+                  (activation_post_process): Identity(input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 736, 3, 3], nparams=0.0, nflops=0.0)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.135424, nflops=36.56448
+              (conv): Conv2d(
+                736, 184, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[30, 736, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.135424, nflops=36.56448
+              )
+              (bn): NaiveSyncBatchNorm(
+                184, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.0, nflops=0.0
+              )
+            )
+            (res_conn): TorchAdd(
+              input_shapes=[[30, 184, 3, 3], [30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.0, nflops=0.0
+              (add_func): FloatFunctional(
+                (activation_post_process): Identity(input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 184, 3, 3], nparams=0.0, nflops=0.0)
+              )
+            )
+          )
+          (fbnetv2_0_5): IRFBlock(
+            input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 200, 3, 3], nparams=1.069776, nflops=140.76
+            (pw): ConvBNRelu(
+              input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 1104, 3, 3], nparams=0.203136, nflops=54.84672
+              (conv): Conv2d(
+                184, 1104, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[30, 184, 3, 3]], output_shapes=[30, 1104, 3, 3], nparams=0.203136, nflops=54.84672
+              )
+              (bn): NaiveSyncBatchNorm(
+                1104, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[30, 1104, 3, 3]], output_shapes=[30, 1104, 3, 3], nparams=0.0, nflops=0.0
+              )
+              (relu): ReLU(
+                inplace=True,
+                input_shapes=[[30, 1104, 3, 3]], output_shapes=[30, 1104, 3, 3], nparams=0.0, nflops=0.0
+              )
+            )
+            (dw): ConvBNRelu(
+              input_shapes=[[30, 1104, 3, 3]], output_shapes=[30, 1104, 3, 3], nparams=0.0276, nflops=7.452
+              (conv): Conv2d(
+                1104, 1104, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1104, bias=False,
+                input_shapes=[[30, 1104, 3, 3]], output_shapes=[30, 1104, 3, 3], nparams=0.0276, nflops=7.452
+              )
+            )
+            (se): SEModule(
+              input_shapes=[[30, 1104, 3, 3]], output_shapes=[30, 1104, 3, 3], nparams=0.61824, nflops=18.84528
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1,
+                input_shapes=[[30, 1104, 3, 3]], output_shapes=[30, 1104, 1, 1], nparams=0.0, nflops=0.29808
+              )
+              (se): Sequential(
+                input_shapes=[[30, 1104, 1, 1]], output_shapes=[30, 1104, 1, 1], nparams=0.61824, nflops=18.5472
+                (0): ConvBNRelu(
+                  input_shapes=[[30, 1104, 1, 1]], output_shapes=[30, 280, 1, 1], nparams=0.30912, nflops=9.2736
+                  (conv): Conv2d(
+                    1104, 280, kernel_size=(1, 1), stride=(1, 1),
+                    input_shapes=[[30, 1104, 1, 1]], output_shapes=[30, 280, 1, 1], nparams=0.30912, nflops=9.2736
+                  )
+                  (relu): ReLU(
+                    inplace=True,
+                    input_shapes=[[30, 280, 1, 1]], output_shapes=[30, 280, 1, 1], nparams=0.0, nflops=0.0
+                  )
+                )
+                (1): Conv2d(
+                  280, 1104, kernel_size=(1, 1), stride=(1, 1),
+                  input_shapes=[[30, 280, 1, 1]], output_shapes=[30, 1104, 1, 1], nparams=0.30912, nflops=9.2736
+                )
+                (2): Sigmoid(input_shapes=[[30, 1104, 1, 1]], output_shapes=[30, 1104, 1, 1], nparams=0.0, nflops=0.0)
+              )
+              (mul): TorchMultiply(
+                input_shapes=[[30, 1104, 3, 3], [30, 1104, 1, 1]], output_shapes=[30, 1104, 3, 3], nparams=0.0, nflops=0.0
+                (mul_func): FloatFunctional(
+                  (activation_post_process): Identity(input_shapes=[[30, 1104, 3, 3]], output_shapes=[30, 1104, 3, 3], nparams=0.0, nflops=0.0)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              input_shapes=[[30, 1104, 3, 3]], output_shapes=[30, 200, 3, 3], nparams=0.2208, nflops=59.616
+              (conv): Conv2d(
+                1104, 200, kernel_size=(1, 1), stride=(1, 1), bias=False,
+                input_shapes=[[30, 1104, 3, 3]], output_shapes=[30, 200, 3, 3], nparams=0.2208, nflops=59.616
+              )
+              (bn): NaiveSyncBatchNorm(
+                200, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True,
+                input_shapes=[[30, 200, 3, 3]], output_shapes=[30, 200, 3, 3], nparams=0.0, nflops=0.0
+              )
+            )
+          )
+        )
+      )
+      (avgpool): AdaptiveAvgPool2d(
+        output_size=1,
+        input_shapes=[[30, 200, 3, 3]], output_shapes=[30, 200, 1, 1], nparams=0.0, nflops=0.054
+      )
+    )
+    (box_predictor): FastRCNNOutputLayers(
+      input_shapes=[[30, 200, 1, 1]], output_shapes=[[30, 2], [30, 4]], nparams=0.0012, nflops=0.036
+      (cls_score): Linear(
+        in_features=200, out_features=2, bias=True,
+        input_shapes=[[30, 200]], output_shapes=[30, 2], nparams=0.0004, nflops=0.012
+      )
+      (bbox_pred): Linear(
+        in_features=200, out_features=4, bias=True,
+        input_shapes=[[30, 200]], output_shapes=[30, 4], nparams=0.0008, nflops=0.024
+      )
+    )
+  )
+)

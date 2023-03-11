@@ -1,0 +1,1853 @@
+N/A indicates a possibly missing statistic due to how the module was called. Missing values are still included in the parent's total.
+TracingAdapter(
+  #params: 5.23M, #flops: 0.99G
+  (model): GeneralizedRCNN(
+    #params: 5.23M, #flops: 0.99G
+    (backbone): FBNetV2C4Backbone(
+      #params: 0.97M, #flops: 0.31G
+      (body): FBNetV2Backbone(
+        #params: 0.97M, #flops: 0.31G
+        (trunk0): Sequential(
+          #params: 1.34K, #flops: 22.1M
+          (fbnetv2_0_0): ConvBNRelu(
+            #params: 0.48K, #flops: 7.72M
+            (conv): Conv2d(
+              3, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1)
+              #params: 0.45K, #flops: 7.19M
+            )
+            (bn): NaiveSyncBatchNorm(
+              16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+              #params: 32, #flops: 0.53M
+            )
+            (relu): ReLU(inplace=True)
+          )
+          (fbnetv2_0_1): IRFBlock(
+            #params: 0.43K, #flops: 7.19M
+            (dw): ConvBNRelu(
+              #params: 0.14K, #flops: 2.4M
+              (conv): Conv2d(
+                16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=16, bias=False
+                #params: 0.14K, #flops: 2.4M
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 0.29K, #flops: 4.79M
+              (conv): Conv2d(
+                16, 16, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 0.26K, #flops: 4.26M
+              )
+              (bn): NaiveSyncBatchNorm(
+                16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 32, #flops: 0.53M
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+          (fbnetv2_0_2): IRFBlock(
+            #params: 0.43K, #flops: 7.19M
+            (dw): ConvBNRelu(
+              #params: 0.14K, #flops: 2.4M
+              (conv): Conv2d(
+                16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=16, bias=False
+                #params: 0.14K, #flops: 2.4M
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 0.29K, #flops: 4.79M
+              (conv): Conv2d(
+                16, 16, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 0.26K, #flops: 4.26M
+              )
+              (bn): NaiveSyncBatchNorm(
+                16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 32, #flops: 0.53M
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+        )
+        (trunk1): Sequential(
+          #params: 20.68K, #flops: 0.1G
+          (fbnetv2_1_0): IRFBlock(
+            #params: 4.34K, #flops: 32.41M
+            (pw): ConvBNRelu(
+              #params: 1.15K, #flops: 19.17M
+              (conv): Conv2d(
+                16, 64, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 1.02K, #flops: 17.04M
+              )
+              (bn): NaiveSyncBatchNorm(
+                64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.13K, #flops: 2.13M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 1.6K, #flops: 6.66M
+              (conv): Conv2d(
+                64, 64, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=64, bias=False
+                #params: 1.6K, #flops: 6.66M
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 1.58K, #flops: 6.59M
+              (conv): Conv2d(
+                64, 24, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 1.54K, #flops: 6.39M
+              )
+              (bn): NaiveSyncBatchNorm(
+                24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 48, #flops: 0.2M
+              )
+            )
+          )
+          (fbnetv2_1_1): IRFBlock(
+            #params: 5.45K, #flops: 22.66M
+            (pw): ConvBNRelu(
+              #params: 1.87K, #flops: 7.79M
+              (conv): Conv2d(
+                24, 72, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 1.73K, #flops: 7.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                72, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.14K, #flops: 0.6M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 1.8K, #flops: 7.49M
+              (conv): Conv2d(
+                72, 72, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=72, bias=False
+                #params: 1.8K, #flops: 7.49M
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 1.78K, #flops: 7.39M
+              (conv): Conv2d(
+                72, 24, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 1.73K, #flops: 7.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 48, #flops: 0.2M
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+          (fbnetv2_1_2): IRFBlock(
+            #params: 5.45K, #flops: 22.66M
+            (pw): ConvBNRelu(
+              #params: 1.87K, #flops: 7.79M
+              (conv): Conv2d(
+                24, 72, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 1.73K, #flops: 7.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                72, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.14K, #flops: 0.6M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 1.8K, #flops: 7.49M
+              (conv): Conv2d(
+                72, 72, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=72, bias=False
+                #params: 1.8K, #flops: 7.49M
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 1.78K, #flops: 7.39M
+              (conv): Conv2d(
+                72, 24, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 1.73K, #flops: 7.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 48, #flops: 0.2M
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+          (fbnetv2_1_3): IRFBlock(
+            #params: 5.45K, #flops: 22.66M
+            (pw): ConvBNRelu(
+              #params: 1.87K, #flops: 7.79M
+              (conv): Conv2d(
+                24, 72, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 1.73K, #flops: 7.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                72, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.14K, #flops: 0.6M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 1.8K, #flops: 7.49M
+              (conv): Conv2d(
+                72, 72, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=72, bias=False
+                #params: 1.8K, #flops: 7.49M
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 1.78K, #flops: 7.39M
+              (conv): Conv2d(
+                72, 24, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 1.73K, #flops: 7.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 48, #flops: 0.2M
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+        )
+        (trunk2): Sequential(
+          #params: 48.74K, #flops: 39.22M
+          (fbnetv2_2_0): IRFBlock(
+            #params: 12.76K, #flops: 16.25M
+            (pw): ConvBNRelu(
+              #params: 2.5K, #flops: 10.38M
+              (conv): Conv2d(
+                24, 96, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 2.3K, #flops: 9.58M
+              )
+              (bn): NaiveSyncBatchNorm(
+                96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.19K, #flops: 0.8M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 2.4K, #flops: 2.5M
+              (conv): Conv2d(
+                96, 96, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=96, bias=False
+                #params: 2.4K, #flops: 2.5M
+              )
+            )
+            (se): SEModule(
+              #params: 4.73K, #flops: 0.1M
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1
+                #params: 0, #flops: 99.84K
+              )
+              (se): Sequential(
+                #params: 4.73K, #flops: 4.61K
+                (0): ConvBNRelu(
+                  #params: 2.33K, #flops: 2.3K
+                  (conv): Conv2d(
+                    96, 24, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 2.33K, #flops: 2.3K
+                  )
+                  (relu): ReLU(inplace=True)
+                )
+                (1): Conv2d(
+                  24, 96, kernel_size=(1, 1), stride=(1, 1)
+                  #params: 2.4K, #flops: 2.3K
+                )
+                (2): Sigmoid()
+              )
+              (mul): TorchMultiply(
+                (mul_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 3.14K, #flops: 3.26M
+              (conv): Conv2d(
+                96, 32, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 3.07K, #flops: 3.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 64, #flops: 66.56K
+              )
+            )
+          )
+          (fbnetv2_2_1): IRFBlock(
+            #params: 11.99K, #flops: 7.66M
+            (pw): ConvBNRelu(
+              #params: 3.26K, #flops: 3.39M
+              (conv): Conv2d(
+                32, 96, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 3.07K, #flops: 3.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.19K, #flops: 0.2M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 0.86K, #flops: 0.9M
+              (conv): Conv2d(
+                96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False
+                #params: 0.86K, #flops: 0.9M
+              )
+            )
+            (se): SEModule(
+              #params: 4.73K, #flops: 0.1M
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1
+                #params: 0, #flops: 99.84K
+              )
+              (se): Sequential(
+                #params: 4.73K, #flops: 4.61K
+                (0): ConvBNRelu(
+                  #params: 2.33K, #flops: 2.3K
+                  (conv): Conv2d(
+                    96, 24, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 2.33K, #flops: 2.3K
+                  )
+                  (relu): ReLU(inplace=True)
+                )
+                (1): Conv2d(
+                  24, 96, kernel_size=(1, 1), stride=(1, 1)
+                  #params: 2.4K, #flops: 2.3K
+                )
+                (2): Sigmoid()
+              )
+              (mul): TorchMultiply(
+                (mul_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 3.14K, #flops: 3.26M
+              (conv): Conv2d(
+                96, 32, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 3.07K, #flops: 3.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 64, #flops: 66.56K
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+          (fbnetv2_2_2): IRFBlock(
+            #params: 11.99K, #flops: 7.66M
+            (pw): ConvBNRelu(
+              #params: 3.26K, #flops: 3.39M
+              (conv): Conv2d(
+                32, 96, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 3.07K, #flops: 3.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.19K, #flops: 0.2M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 0.86K, #flops: 0.9M
+              (conv): Conv2d(
+                96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False
+                #params: 0.86K, #flops: 0.9M
+              )
+            )
+            (se): SEModule(
+              #params: 4.73K, #flops: 0.1M
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1
+                #params: 0, #flops: 99.84K
+              )
+              (se): Sequential(
+                #params: 4.73K, #flops: 4.61K
+                (0): ConvBNRelu(
+                  #params: 2.33K, #flops: 2.3K
+                  (conv): Conv2d(
+                    96, 24, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 2.33K, #flops: 2.3K
+                  )
+                  (relu): ReLU(inplace=True)
+                )
+                (1): Conv2d(
+                  24, 96, kernel_size=(1, 1), stride=(1, 1)
+                  #params: 2.4K, #flops: 2.3K
+                )
+                (2): Sigmoid()
+              )
+              (mul): TorchMultiply(
+                (mul_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 3.14K, #flops: 3.26M
+              (conv): Conv2d(
+                96, 32, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 3.07K, #flops: 3.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 64, #flops: 66.56K
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+          (fbnetv2_2_3): IRFBlock(
+            #params: 11.99K, #flops: 7.66M
+            (pw): ConvBNRelu(
+              #params: 3.26K, #flops: 3.39M
+              (conv): Conv2d(
+                32, 96, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 3.07K, #flops: 3.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.19K, #flops: 0.2M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 0.86K, #flops: 0.9M
+              (conv): Conv2d(
+                96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=96, bias=False
+                #params: 0.86K, #flops: 0.9M
+              )
+            )
+            (se): SEModule(
+              #params: 4.73K, #flops: 0.1M
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1
+                #params: 0, #flops: 99.84K
+              )
+              (se): Sequential(
+                #params: 4.73K, #flops: 4.61K
+                (0): ConvBNRelu(
+                  #params: 2.33K, #flops: 2.3K
+                  (conv): Conv2d(
+                    96, 24, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 2.33K, #flops: 2.3K
+                  )
+                  (relu): ReLU(inplace=True)
+                )
+                (1): Conv2d(
+                  24, 96, kernel_size=(1, 1), stride=(1, 1)
+                  #params: 2.4K, #flops: 2.3K
+                )
+                (2): Sigmoid()
+              )
+              (mul): TorchMultiply(
+                (mul_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 3.14K, #flops: 3.26M
+              (conv): Conv2d(
+                96, 32, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 3.07K, #flops: 3.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 64, #flops: 66.56K
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+        )
+        (trunk3): Sequential(
+          #params: 0.9M, #flops: 0.15G
+          (fbnetv2_3_0): IRFBlock(
+            #params: 15.87K, #flops: 7.52M
+            (pw): ConvBNRelu(
+              #params: 4.35K, #flops: 4.53M
+              (conv): Conv2d(
+                32, 128, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 4.1K, #flops: 4.26M
+              )
+              (bn): NaiveSyncBatchNorm(
+                128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.26K, #flops: 0.27M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 3.2K, #flops: 0.83M
+              (conv): Conv2d(
+                128, 128, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=128, bias=False
+                #params: 3.2K, #flops: 0.83M
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 8.32K, #flops: 2.16M
+              (conv): Conv2d(
+                128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 8.19K, #flops: 2.13M
+              )
+              (bn): NaiveSyncBatchNorm(
+                64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.13K, #flops: 33.28K
+              )
+            )
+          )
+          (fbnetv2_3_1): IRFBlock(
+            #params: 26.82K, #flops: 6.97M
+            (pw): ConvBNRelu(
+              #params: 12.67K, #flops: 3.29M
+              (conv): Conv2d(
+                64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 12.29K, #flops: 3.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.38K, #flops: 99.84K
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 1.73K, #flops: 0.45M
+              (conv): Conv2d(
+                192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False
+                #params: 1.73K, #flops: 0.45M
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 12.42K, #flops: 3.23M
+              (conv): Conv2d(
+                192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 12.29K, #flops: 3.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.13K, #flops: 33.28K
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+          (fbnetv2_3_2): IRFBlock(
+            #params: 26.82K, #flops: 6.97M
+            (pw): ConvBNRelu(
+              #params: 12.67K, #flops: 3.29M
+              (conv): Conv2d(
+                64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 12.29K, #flops: 3.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.38K, #flops: 99.84K
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 1.73K, #flops: 0.45M
+              (conv): Conv2d(
+                192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False
+                #params: 1.73K, #flops: 0.45M
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 12.42K, #flops: 3.23M
+              (conv): Conv2d(
+                192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 12.29K, #flops: 3.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.13K, #flops: 33.28K
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+          (fbnetv2_3_3): IRFBlock(
+            #params: 26.82K, #flops: 6.97M
+            (pw): ConvBNRelu(
+              #params: 12.67K, #flops: 3.29M
+              (conv): Conv2d(
+                64, 192, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 12.29K, #flops: 3.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.38K, #flops: 99.84K
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 1.73K, #flops: 0.45M
+              (conv): Conv2d(
+                192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=192, bias=False
+                #params: 1.73K, #flops: 0.45M
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 12.42K, #flops: 3.23M
+              (conv): Conv2d(
+                192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 12.29K, #flops: 3.19M
+              )
+              (bn): NaiveSyncBatchNorm(
+                64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.13K, #flops: 33.28K
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+          (fbnetv2_3_4): IRFBlock(
+            #params: 85.28K, #flops: 13.67M
+            (pw): ConvBNRelu(
+              #params: 16.9K, #flops: 4.39M
+              (conv): Conv2d(
+                64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 16.38K, #flops: 4.26M
+              )
+              (bn): NaiveSyncBatchNorm(
+                256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.51K, #flops: 0.13M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 6.4K, #flops: 1.66M
+              (conv): Conv2d(
+                256, 256, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=256, bias=False
+                #params: 6.4K, #flops: 1.66M
+              )
+            )
+            (se): SEModule(
+              #params: 33.09K, #flops: 99.33K
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1
+                #params: 0, #flops: 66.56K
+              )
+              (se): Sequential(
+                #params: 33.09K, #flops: 32.77K
+                (0): ConvBNRelu(
+                  #params: 16.45K, #flops: 16.38K
+                  (conv): Conv2d(
+                    256, 64, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 16.45K, #flops: 16.38K
+                  )
+                  (relu): ReLU(inplace=True)
+                )
+                (1): Conv2d(
+                  64, 256, kernel_size=(1, 1), stride=(1, 1)
+                  #params: 16.64K, #flops: 16.38K
+                )
+                (2): Sigmoid()
+              )
+              (mul): TorchMultiply(
+                (mul_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 28.9K, #flops: 7.51M
+              (conv): Conv2d(
+                256, 112, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 28.67K, #flops: 7.45M
+              )
+              (bn): NaiveSyncBatchNorm(
+                112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.22K, #flops: 58.24K
+              )
+            )
+          )
+          (fbnetv2_3_5): IRFBlock(
+            #params: 0.14M, #flops: 22.13M
+            (pw): ConvBNRelu(
+              #params: 38.3K, #flops: 9.96M
+              (conv): Conv2d(
+                112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 37.63K, #flops: 9.78M
+              )
+              (bn): NaiveSyncBatchNorm(
+                336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.67K, #flops: 0.17M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 8.4K, #flops: 2.18M
+              (conv): Conv2d(
+                336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False
+                #params: 8.4K, #flops: 2.18M
+              )
+            )
+            (se): SEModule(
+              #params: 59.56K, #flops: 0.15M
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1
+                #params: 0, #flops: 87.36K
+              )
+              (se): Sequential(
+                #params: 59.56K, #flops: 59.14K
+                (0): ConvBNRelu(
+                  #params: 29.66K, #flops: 29.57K
+                  (conv): Conv2d(
+                    336, 88, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 29.66K, #flops: 29.57K
+                  )
+                  (relu): ReLU(inplace=True)
+                )
+                (1): Conv2d(
+                  88, 336, kernel_size=(1, 1), stride=(1, 1)
+                  #params: 29.9K, #flops: 29.57K
+                )
+                (2): Sigmoid()
+              )
+              (mul): TorchMultiply(
+                (mul_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 37.86K, #flops: 9.84M
+              (conv): Conv2d(
+                336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 37.63K, #flops: 9.78M
+              )
+              (bn): NaiveSyncBatchNorm(
+                112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.22K, #flops: 58.24K
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+          (fbnetv2_3_6): IRFBlock(
+            #params: 0.14M, #flops: 22.13M
+            (pw): ConvBNRelu(
+              #params: 38.3K, #flops: 9.96M
+              (conv): Conv2d(
+                112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 37.63K, #flops: 9.78M
+              )
+              (bn): NaiveSyncBatchNorm(
+                336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.67K, #flops: 0.17M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 8.4K, #flops: 2.18M
+              (conv): Conv2d(
+                336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False
+                #params: 8.4K, #flops: 2.18M
+              )
+            )
+            (se): SEModule(
+              #params: 59.56K, #flops: 0.15M
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1
+                #params: 0, #flops: 87.36K
+              )
+              (se): Sequential(
+                #params: 59.56K, #flops: 59.14K
+                (0): ConvBNRelu(
+                  #params: 29.66K, #flops: 29.57K
+                  (conv): Conv2d(
+                    336, 88, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 29.66K, #flops: 29.57K
+                  )
+                  (relu): ReLU(inplace=True)
+                )
+                (1): Conv2d(
+                  88, 336, kernel_size=(1, 1), stride=(1, 1)
+                  #params: 29.9K, #flops: 29.57K
+                )
+                (2): Sigmoid()
+              )
+              (mul): TorchMultiply(
+                (mul_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 37.86K, #flops: 9.84M
+              (conv): Conv2d(
+                336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 37.63K, #flops: 9.78M
+              )
+              (bn): NaiveSyncBatchNorm(
+                112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.22K, #flops: 58.24K
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+          (fbnetv2_3_7): IRFBlock(
+            #params: 0.14M, #flops: 22.13M
+            (pw): ConvBNRelu(
+              #params: 38.3K, #flops: 9.96M
+              (conv): Conv2d(
+                112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 37.63K, #flops: 9.78M
+              )
+              (bn): NaiveSyncBatchNorm(
+                336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.67K, #flops: 0.17M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 8.4K, #flops: 2.18M
+              (conv): Conv2d(
+                336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False
+                #params: 8.4K, #flops: 2.18M
+              )
+            )
+            (se): SEModule(
+              #params: 59.56K, #flops: 0.15M
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1
+                #params: 0, #flops: 87.36K
+              )
+              (se): Sequential(
+                #params: 59.56K, #flops: 59.14K
+                (0): ConvBNRelu(
+                  #params: 29.66K, #flops: 29.57K
+                  (conv): Conv2d(
+                    336, 88, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 29.66K, #flops: 29.57K
+                  )
+                  (relu): ReLU(inplace=True)
+                )
+                (1): Conv2d(
+                  88, 336, kernel_size=(1, 1), stride=(1, 1)
+                  #params: 29.9K, #flops: 29.57K
+                )
+                (2): Sigmoid()
+              )
+              (mul): TorchMultiply(
+                (mul_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 37.86K, #flops: 9.84M
+              (conv): Conv2d(
+                336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 37.63K, #flops: 9.78M
+              )
+              (bn): NaiveSyncBatchNorm(
+                112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.22K, #flops: 58.24K
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+          (fbnetv2_3_8): IRFBlock(
+            #params: 0.14M, #flops: 22.13M
+            (pw): ConvBNRelu(
+              #params: 38.3K, #flops: 9.96M
+              (conv): Conv2d(
+                112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 37.63K, #flops: 9.78M
+              )
+              (bn): NaiveSyncBatchNorm(
+                336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.67K, #flops: 0.17M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 8.4K, #flops: 2.18M
+              (conv): Conv2d(
+                336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False
+                #params: 8.4K, #flops: 2.18M
+              )
+            )
+            (se): SEModule(
+              #params: 59.56K, #flops: 0.15M
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1
+                #params: 0, #flops: 87.36K
+              )
+              (se): Sequential(
+                #params: 59.56K, #flops: 59.14K
+                (0): ConvBNRelu(
+                  #params: 29.66K, #flops: 29.57K
+                  (conv): Conv2d(
+                    336, 88, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 29.66K, #flops: 29.57K
+                  )
+                  (relu): ReLU(inplace=True)
+                )
+                (1): Conv2d(
+                  88, 336, kernel_size=(1, 1), stride=(1, 1)
+                  #params: 29.9K, #flops: 29.57K
+                )
+                (2): Sigmoid()
+              )
+              (mul): TorchMultiply(
+                (mul_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 37.86K, #flops: 9.84M
+              (conv): Conv2d(
+                336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 37.63K, #flops: 9.78M
+              )
+              (bn): NaiveSyncBatchNorm(
+                112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.22K, #flops: 58.24K
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+          (fbnetv2_3_9): IRFBlock(
+            #params: 0.14M, #flops: 22.13M
+            (pw): ConvBNRelu(
+              #params: 38.3K, #flops: 9.96M
+              (conv): Conv2d(
+                112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 37.63K, #flops: 9.78M
+              )
+              (bn): NaiveSyncBatchNorm(
+                336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.67K, #flops: 0.17M
+              )
+              (relu): ReLU(inplace=True)
+            )
+            (dw): ConvBNRelu(
+              #params: 8.4K, #flops: 2.18M
+              (conv): Conv2d(
+                336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False
+                #params: 8.4K, #flops: 2.18M
+              )
+            )
+            (se): SEModule(
+              #params: 59.56K, #flops: 0.15M
+              (avg_pool): AdaptiveAvgPool2d(
+                output_size=1
+                #params: 0, #flops: 87.36K
+              )
+              (se): Sequential(
+                #params: 59.56K, #flops: 59.14K
+                (0): ConvBNRelu(
+                  #params: 29.66K, #flops: 29.57K
+                  (conv): Conv2d(
+                    336, 88, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 29.66K, #flops: 29.57K
+                  )
+                  (relu): ReLU(inplace=True)
+                )
+                (1): Conv2d(
+                  88, 336, kernel_size=(1, 1), stride=(1, 1)
+                  #params: 29.9K, #flops: 29.57K
+                )
+                (2): Sigmoid()
+              )
+              (mul): TorchMultiply(
+                (mul_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (pwl): ConvBNRelu(
+              #params: 37.86K, #flops: 9.84M
+              (conv): Conv2d(
+                336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False
+                #params: 37.63K, #flops: 9.78M
+              )
+              (bn): NaiveSyncBatchNorm(
+                112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                #params: 0.22K, #flops: 58.24K
+              )
+            )
+            (res_conn): TorchAdd(
+              (add_func): FloatFunctional(
+                #params: 0, #flops: N/A
+                (activation_post_process): Identity(#params: 0, #flops: N/A)
+              )
+            )
+          )
+        )
+      )
+    )
+    (proposal_generator): RPN(
+      #params: 0.73M, #flops: 0.11G
+      (rpn_head): FBNetV2RpnHead(
+        #params: 0.73M, #flops: 0.11G
+        (rpn_feature): FBNetModule(
+          #params: 0.72M, #flops: 0.11G
+          (0): Sequential(
+            #params: 0.72M, #flops: 0.11G
+            (fbnetv2_0_0): IRFBlock(
+              #params: 0.14M, #flops: 22.13M
+              (pw): ConvBNRelu(
+                #params: 38.3K, #flops: 9.96M
+                (conv): Conv2d(
+                  112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 37.63K, #flops: 9.78M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.67K, #flops: 0.17M
+                )
+                (relu): ReLU(inplace=True)
+              )
+              (dw): ConvBNRelu(
+                #params: 8.4K, #flops: 2.18M
+                (conv): Conv2d(
+                  336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False
+                  #params: 8.4K, #flops: 2.18M
+                )
+              )
+              (se): SEModule(
+                #params: 59.56K, #flops: 0.15M
+                (avg_pool): AdaptiveAvgPool2d(
+                  output_size=1
+                  #params: 0, #flops: 87.36K
+                )
+                (se): Sequential(
+                  #params: 59.56K, #flops: 59.14K
+                  (0): ConvBNRelu(
+                    #params: 29.66K, #flops: 29.57K
+                    (conv): Conv2d(
+                      336, 88, kernel_size=(1, 1), stride=(1, 1)
+                      #params: 29.66K, #flops: 29.57K
+                    )
+                    (relu): ReLU(inplace=True)
+                  )
+                  (1): Conv2d(
+                    88, 336, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 29.9K, #flops: 29.57K
+                  )
+                  (2): Sigmoid()
+                )
+                (mul): TorchMultiply(
+                  (mul_func): FloatFunctional(
+                    #params: 0, #flops: N/A
+                    (activation_post_process): Identity(#params: 0, #flops: N/A)
+                  )
+                )
+              )
+              (pwl): ConvBNRelu(
+                #params: 37.86K, #flops: 9.84M
+                (conv): Conv2d(
+                  336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 37.63K, #flops: 9.78M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.22K, #flops: 58.24K
+                )
+              )
+              (res_conn): TorchAdd(
+                (add_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (fbnetv2_0_1): IRFBlock(
+              #params: 0.14M, #flops: 22.13M
+              (pw): ConvBNRelu(
+                #params: 38.3K, #flops: 9.96M
+                (conv): Conv2d(
+                  112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 37.63K, #flops: 9.78M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.67K, #flops: 0.17M
+                )
+                (relu): ReLU(inplace=True)
+              )
+              (dw): ConvBNRelu(
+                #params: 8.4K, #flops: 2.18M
+                (conv): Conv2d(
+                  336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False
+                  #params: 8.4K, #flops: 2.18M
+                )
+              )
+              (se): SEModule(
+                #params: 59.56K, #flops: 0.15M
+                (avg_pool): AdaptiveAvgPool2d(
+                  output_size=1
+                  #params: 0, #flops: 87.36K
+                )
+                (se): Sequential(
+                  #params: 59.56K, #flops: 59.14K
+                  (0): ConvBNRelu(
+                    #params: 29.66K, #flops: 29.57K
+                    (conv): Conv2d(
+                      336, 88, kernel_size=(1, 1), stride=(1, 1)
+                      #params: 29.66K, #flops: 29.57K
+                    )
+                    (relu): ReLU(inplace=True)
+                  )
+                  (1): Conv2d(
+                    88, 336, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 29.9K, #flops: 29.57K
+                  )
+                  (2): Sigmoid()
+                )
+                (mul): TorchMultiply(
+                  (mul_func): FloatFunctional(
+                    #params: 0, #flops: N/A
+                    (activation_post_process): Identity(#params: 0, #flops: N/A)
+                  )
+                )
+              )
+              (pwl): ConvBNRelu(
+                #params: 37.86K, #flops: 9.84M
+                (conv): Conv2d(
+                  336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 37.63K, #flops: 9.78M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.22K, #flops: 58.24K
+                )
+              )
+              (res_conn): TorchAdd(
+                (add_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (fbnetv2_0_2): IRFBlock(
+              #params: 0.14M, #flops: 22.13M
+              (pw): ConvBNRelu(
+                #params: 38.3K, #flops: 9.96M
+                (conv): Conv2d(
+                  112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 37.63K, #flops: 9.78M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.67K, #flops: 0.17M
+                )
+                (relu): ReLU(inplace=True)
+              )
+              (dw): ConvBNRelu(
+                #params: 8.4K, #flops: 2.18M
+                (conv): Conv2d(
+                  336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False
+                  #params: 8.4K, #flops: 2.18M
+                )
+              )
+              (se): SEModule(
+                #params: 59.56K, #flops: 0.15M
+                (avg_pool): AdaptiveAvgPool2d(
+                  output_size=1
+                  #params: 0, #flops: 87.36K
+                )
+                (se): Sequential(
+                  #params: 59.56K, #flops: 59.14K
+                  (0): ConvBNRelu(
+                    #params: 29.66K, #flops: 29.57K
+                    (conv): Conv2d(
+                      336, 88, kernel_size=(1, 1), stride=(1, 1)
+                      #params: 29.66K, #flops: 29.57K
+                    )
+                    (relu): ReLU(inplace=True)
+                  )
+                  (1): Conv2d(
+                    88, 336, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 29.9K, #flops: 29.57K
+                  )
+                  (2): Sigmoid()
+                )
+                (mul): TorchMultiply(
+                  (mul_func): FloatFunctional(
+                    #params: 0, #flops: N/A
+                    (activation_post_process): Identity(#params: 0, #flops: N/A)
+                  )
+                )
+              )
+              (pwl): ConvBNRelu(
+                #params: 37.86K, #flops: 9.84M
+                (conv): Conv2d(
+                  336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 37.63K, #flops: 9.78M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.22K, #flops: 58.24K
+                )
+              )
+              (res_conn): TorchAdd(
+                (add_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (fbnetv2_0_3): IRFBlock(
+              #params: 0.14M, #flops: 22.13M
+              (pw): ConvBNRelu(
+                #params: 38.3K, #flops: 9.96M
+                (conv): Conv2d(
+                  112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 37.63K, #flops: 9.78M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.67K, #flops: 0.17M
+                )
+                (relu): ReLU(inplace=True)
+              )
+              (dw): ConvBNRelu(
+                #params: 8.4K, #flops: 2.18M
+                (conv): Conv2d(
+                  336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False
+                  #params: 8.4K, #flops: 2.18M
+                )
+              )
+              (se): SEModule(
+                #params: 59.56K, #flops: 0.15M
+                (avg_pool): AdaptiveAvgPool2d(
+                  output_size=1
+                  #params: 0, #flops: 87.36K
+                )
+                (se): Sequential(
+                  #params: 59.56K, #flops: 59.14K
+                  (0): ConvBNRelu(
+                    #params: 29.66K, #flops: 29.57K
+                    (conv): Conv2d(
+                      336, 88, kernel_size=(1, 1), stride=(1, 1)
+                      #params: 29.66K, #flops: 29.57K
+                    )
+                    (relu): ReLU(inplace=True)
+                  )
+                  (1): Conv2d(
+                    88, 336, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 29.9K, #flops: 29.57K
+                  )
+                  (2): Sigmoid()
+                )
+                (mul): TorchMultiply(
+                  (mul_func): FloatFunctional(
+                    #params: 0, #flops: N/A
+                    (activation_post_process): Identity(#params: 0, #flops: N/A)
+                  )
+                )
+              )
+              (pwl): ConvBNRelu(
+                #params: 37.86K, #flops: 9.84M
+                (conv): Conv2d(
+                  336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 37.63K, #flops: 9.78M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.22K, #flops: 58.24K
+                )
+              )
+              (res_conn): TorchAdd(
+                (add_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (fbnetv2_0_4): IRFBlock(
+              #params: 0.14M, #flops: 22.13M
+              (pw): ConvBNRelu(
+                #params: 38.3K, #flops: 9.96M
+                (conv): Conv2d(
+                  112, 336, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 37.63K, #flops: 9.78M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  336, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.67K, #flops: 0.17M
+                )
+                (relu): ReLU(inplace=True)
+              )
+              (dw): ConvBNRelu(
+                #params: 8.4K, #flops: 2.18M
+                (conv): Conv2d(
+                  336, 336, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=336, bias=False
+                  #params: 8.4K, #flops: 2.18M
+                )
+              )
+              (se): SEModule(
+                #params: 59.56K, #flops: 0.15M
+                (avg_pool): AdaptiveAvgPool2d(
+                  output_size=1
+                  #params: 0, #flops: 87.36K
+                )
+                (se): Sequential(
+                  #params: 59.56K, #flops: 59.14K
+                  (0): ConvBNRelu(
+                    #params: 29.66K, #flops: 29.57K
+                    (conv): Conv2d(
+                      336, 88, kernel_size=(1, 1), stride=(1, 1)
+                      #params: 29.66K, #flops: 29.57K
+                    )
+                    (relu): ReLU(inplace=True)
+                  )
+                  (1): Conv2d(
+                    88, 336, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 29.9K, #flops: 29.57K
+                  )
+                  (2): Sigmoid()
+                )
+                (mul): TorchMultiply(
+                  (mul_func): FloatFunctional(
+                    #params: 0, #flops: N/A
+                    (activation_post_process): Identity(#params: 0, #flops: N/A)
+                  )
+                )
+              )
+              (pwl): ConvBNRelu(
+                #params: 37.86K, #flops: 9.84M
+                (conv): Conv2d(
+                  336, 112, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 37.63K, #flops: 9.78M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.22K, #flops: 58.24K
+                )
+              )
+              (res_conn): TorchAdd(
+                (add_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+          )
+        )
+        (rpn_regressor): RPNHeadConvRegressor(
+          #params: 8.47K, #flops: 2.18M
+          (cls_logits): Conv2d(
+            112, 15, kernel_size=(1, 1), stride=(1, 1)
+            #params: 1.7K, #flops: 0.44M
+          )
+          (bbox_pred): Conv2d(
+            112, 60, kernel_size=(1, 1), stride=(1, 1)
+            #params: 6.78K, #flops: 1.75M
+          )
+        )
+      )
+      (anchor_generator): DefaultAnchorGenerator(
+        (cell_anchors): BufferList(#params: 0, #flops: N/A)
+      )
+    )
+    (roi_heads): StandardROIHeads(
+      #params: 3.53M, #flops: 0.56G
+      (box_pooler): ROIPooler(
+        (level_poolers): ModuleList(
+          (0): ROIAlign()
+        )
+      )
+      (box_head): FBNetV2RoIBoxHead(
+        #params: 3.52M, #flops: 0.56G
+        (roi_box_conv): FBNetModule(
+          #params: 3.52M, #flops: 0.56G
+          (0): Sequential(
+            #params: 3.52M, #flops: 0.56G
+            (fbnetv2_0_0): IRFBlock(
+              #params: 0.25M, #flops: 83.67M
+              (pw): ConvBNRelu(
+                #params: 51.07K, #flops: 55.16M
+                (conv): Conv2d(
+                  112, 448, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 50.18K, #flops: 54.19M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  448, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.9K, #flops: 0.97M
+                )
+                (relu): ReLU(inplace=True)
+              )
+              (dw): ConvBNRelu(
+                #params: 11.2K, #flops: 3.02M
+                (conv): Conv2d(
+                  448, 448, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=448, bias=False
+                  #params: 11.2K, #flops: 3.02M
+                )
+              )
+              (se): SEModule(
+                #params: 0.1M, #flops: 3.13M
+                (avg_pool): AdaptiveAvgPool2d(
+                  output_size=1
+                  #params: 0, #flops: 0.12M
+                )
+                (se): Sequential(
+                  #params: 0.1M, #flops: 3.01M
+                  (0): ConvBNRelu(
+                    #params: 50.29K, #flops: 1.51M
+                    (conv): Conv2d(
+                      448, 112, kernel_size=(1, 1), stride=(1, 1)
+                      #params: 50.29K, #flops: 1.51M
+                    )
+                    (relu): ReLU(inplace=True)
+                  )
+                  (1): Conv2d(
+                    112, 448, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 50.62K, #flops: 1.51M
+                  )
+                  (2): Sigmoid()
+                )
+                (mul): TorchMultiply(
+                  (mul_func): FloatFunctional(
+                    #params: 0, #flops: N/A
+                    (activation_post_process): Identity(#params: 0, #flops: N/A)
+                  )
+                )
+              )
+              (pwl): ConvBNRelu(
+                #params: 82.8K, #flops: 22.36M
+                (conv): Conv2d(
+                  448, 184, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 82.43K, #flops: 22.26M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  184, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.37K, #flops: 99.36K
+                )
+              )
+            )
+            (fbnetv2_0_1): IRFBlock(
+              #params: 0.55M, #flops: 83.74M
+              (pw): ConvBNRelu(
+                #params: 0.14M, #flops: 36.96M
+                (conv): Conv2d(
+                  184, 736, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 0.14M, #flops: 36.56M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  736, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 1.47K, #flops: 0.4M
+                )
+                (relu): ReLU(inplace=True)
+              )
+              (dw): ConvBNRelu(
+                #params: 6.62K, #flops: 1.79M
+                (conv): Conv2d(
+                  736, 736, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=736, bias=False
+                  #params: 6.62K, #flops: 1.79M
+                )
+              )
+              (se): SEModule(
+                #params: 0.27M, #flops: 8.32M
+                (avg_pool): AdaptiveAvgPool2d(
+                  output_size=1
+                  #params: 0, #flops: 0.2M
+                )
+                (se): Sequential(
+                  #params: 0.27M, #flops: 8.13M
+                  (0): ConvBNRelu(
+                    #params: 0.14M, #flops: 4.06M
+                    (conv): Conv2d(
+                      736, 184, kernel_size=(1, 1), stride=(1, 1)
+                      #params: 0.14M, #flops: 4.06M
+                    )
+                    (relu): ReLU(inplace=True)
+                  )
+                  (1): Conv2d(
+                    184, 736, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 0.14M, #flops: 4.06M
+                  )
+                  (2): Sigmoid()
+                )
+                (mul): TorchMultiply(
+                  (mul_func): FloatFunctional(
+                    #params: 0, #flops: N/A
+                    (activation_post_process): Identity(#params: 0, #flops: N/A)
+                  )
+                )
+              )
+              (pwl): ConvBNRelu(
+                #params: 0.14M, #flops: 36.66M
+                (conv): Conv2d(
+                  736, 184, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 0.14M, #flops: 36.56M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  184, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.37K, #flops: 99.36K
+                )
+              )
+              (res_conn): TorchAdd(
+                (add_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (fbnetv2_0_2): IRFBlock(
+              #params: 0.55M, #flops: 83.74M
+              (pw): ConvBNRelu(
+                #params: 0.14M, #flops: 36.96M
+                (conv): Conv2d(
+                  184, 736, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 0.14M, #flops: 36.56M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  736, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 1.47K, #flops: 0.4M
+                )
+                (relu): ReLU(inplace=True)
+              )
+              (dw): ConvBNRelu(
+                #params: 6.62K, #flops: 1.79M
+                (conv): Conv2d(
+                  736, 736, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=736, bias=False
+                  #params: 6.62K, #flops: 1.79M
+                )
+              )
+              (se): SEModule(
+                #params: 0.27M, #flops: 8.32M
+                (avg_pool): AdaptiveAvgPool2d(
+                  output_size=1
+                  #params: 0, #flops: 0.2M
+                )
+                (se): Sequential(
+                  #params: 0.27M, #flops: 8.13M
+                  (0): ConvBNRelu(
+                    #params: 0.14M, #flops: 4.06M
+                    (conv): Conv2d(
+                      736, 184, kernel_size=(1, 1), stride=(1, 1)
+                      #params: 0.14M, #flops: 4.06M
+                    )
+                    (relu): ReLU(inplace=True)
+                  )
+                  (1): Conv2d(
+                    184, 736, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 0.14M, #flops: 4.06M
+                  )
+                  (2): Sigmoid()
+                )
+                (mul): TorchMultiply(
+                  (mul_func): FloatFunctional(
+                    #params: 0, #flops: N/A
+                    (activation_post_process): Identity(#params: 0, #flops: N/A)
+                  )
+                )
+              )
+              (pwl): ConvBNRelu(
+                #params: 0.14M, #flops: 36.66M
+                (conv): Conv2d(
+                  736, 184, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 0.14M, #flops: 36.56M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  184, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.37K, #flops: 99.36K
+                )
+              )
+              (res_conn): TorchAdd(
+                (add_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (fbnetv2_0_3): IRFBlock(
+              #params: 0.55M, #flops: 83.74M
+              (pw): ConvBNRelu(
+                #params: 0.14M, #flops: 36.96M
+                (conv): Conv2d(
+                  184, 736, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 0.14M, #flops: 36.56M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  736, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 1.47K, #flops: 0.4M
+                )
+                (relu): ReLU(inplace=True)
+              )
+              (dw): ConvBNRelu(
+                #params: 6.62K, #flops: 1.79M
+                (conv): Conv2d(
+                  736, 736, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=736, bias=False
+                  #params: 6.62K, #flops: 1.79M
+                )
+              )
+              (se): SEModule(
+                #params: 0.27M, #flops: 8.32M
+                (avg_pool): AdaptiveAvgPool2d(
+                  output_size=1
+                  #params: 0, #flops: 0.2M
+                )
+                (se): Sequential(
+                  #params: 0.27M, #flops: 8.13M
+                  (0): ConvBNRelu(
+                    #params: 0.14M, #flops: 4.06M
+                    (conv): Conv2d(
+                      736, 184, kernel_size=(1, 1), stride=(1, 1)
+                      #params: 0.14M, #flops: 4.06M
+                    )
+                    (relu): ReLU(inplace=True)
+                  )
+                  (1): Conv2d(
+                    184, 736, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 0.14M, #flops: 4.06M
+                  )
+                  (2): Sigmoid()
+                )
+                (mul): TorchMultiply(
+                  (mul_func): FloatFunctional(
+                    #params: 0, #flops: N/A
+                    (activation_post_process): Identity(#params: 0, #flops: N/A)
+                  )
+                )
+              )
+              (pwl): ConvBNRelu(
+                #params: 0.14M, #flops: 36.66M
+                (conv): Conv2d(
+                  736, 184, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 0.14M, #flops: 36.56M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  184, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.37K, #flops: 99.36K
+                )
+              )
+              (res_conn): TorchAdd(
+                (add_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (fbnetv2_0_4): IRFBlock(
+              #params: 0.55M, #flops: 83.74M
+              (pw): ConvBNRelu(
+                #params: 0.14M, #flops: 36.96M
+                (conv): Conv2d(
+                  184, 736, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 0.14M, #flops: 36.56M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  736, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 1.47K, #flops: 0.4M
+                )
+                (relu): ReLU(inplace=True)
+              )
+              (dw): ConvBNRelu(
+                #params: 6.62K, #flops: 1.79M
+                (conv): Conv2d(
+                  736, 736, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=736, bias=False
+                  #params: 6.62K, #flops: 1.79M
+                )
+              )
+              (se): SEModule(
+                #params: 0.27M, #flops: 8.32M
+                (avg_pool): AdaptiveAvgPool2d(
+                  output_size=1
+                  #params: 0, #flops: 0.2M
+                )
+                (se): Sequential(
+                  #params: 0.27M, #flops: 8.13M
+                  (0): ConvBNRelu(
+                    #params: 0.14M, #flops: 4.06M
+                    (conv): Conv2d(
+                      736, 184, kernel_size=(1, 1), stride=(1, 1)
+                      #params: 0.14M, #flops: 4.06M
+                    )
+                    (relu): ReLU(inplace=True)
+                  )
+                  (1): Conv2d(
+                    184, 736, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 0.14M, #flops: 4.06M
+                  )
+                  (2): Sigmoid()
+                )
+                (mul): TorchMultiply(
+                  (mul_func): FloatFunctional(
+                    #params: 0, #flops: N/A
+                    (activation_post_process): Identity(#params: 0, #flops: N/A)
+                  )
+                )
+              )
+              (pwl): ConvBNRelu(
+                #params: 0.14M, #flops: 36.66M
+                (conv): Conv2d(
+                  736, 184, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 0.14M, #flops: 36.56M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  184, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.37K, #flops: 99.36K
+                )
+              )
+              (res_conn): TorchAdd(
+                (add_func): FloatFunctional(
+                  #params: 0, #flops: N/A
+                  (activation_post_process): Identity(#params: 0, #flops: N/A)
+                )
+              )
+            )
+            (fbnetv2_0_5): IRFBlock(
+              #params: 1.07M, #flops: 0.14G
+              (pw): ConvBNRelu(
+                #params: 0.21M, #flops: 55.44M
+                (conv): Conv2d(
+                  184, 1104, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 0.2M, #flops: 54.85M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  1104, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 2.21K, #flops: 0.6M
+                )
+                (relu): ReLU(inplace=True)
+              )
+              (dw): ConvBNRelu(
+                #params: 27.6K, #flops: 7.45M
+                (conv): Conv2d(
+                  1104, 1104, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1104, bias=False
+                  #params: 27.6K, #flops: 7.45M
+                )
+              )
+              (se): SEModule(
+                #params: 0.62M, #flops: 18.85M
+                (avg_pool): AdaptiveAvgPool2d(
+                  output_size=1
+                  #params: 0, #flops: 0.3M
+                )
+                (se): Sequential(
+                  #params: 0.62M, #flops: 18.55M
+                  (0): ConvBNRelu(
+                    #params: 0.31M, #flops: 9.27M
+                    (conv): Conv2d(
+                      1104, 280, kernel_size=(1, 1), stride=(1, 1)
+                      #params: 0.31M, #flops: 9.27M
+                    )
+                    (relu): ReLU(inplace=True)
+                  )
+                  (1): Conv2d(
+                    280, 1104, kernel_size=(1, 1), stride=(1, 1)
+                    #params: 0.31M, #flops: 9.27M
+                  )
+                  (2): Sigmoid()
+                )
+                (mul): TorchMultiply(
+                  (mul_func): FloatFunctional(
+                    #params: 0, #flops: N/A
+                    (activation_post_process): Identity(#params: 0, #flops: N/A)
+                  )
+                )
+              )
+              (pwl): ConvBNRelu(
+                #params: 0.22M, #flops: 59.72M
+                (conv): Conv2d(
+                  1104, 200, kernel_size=(1, 1), stride=(1, 1), bias=False
+                  #params: 0.22M, #flops: 59.62M
+                )
+                (bn): NaiveSyncBatchNorm(
+                  200, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True
+                  #params: 0.4K, #flops: 0.11M
+                )
+              )
+            )
+          )
+        )
+        (avgpool): AdaptiveAvgPool2d(
+          output_size=1
+          #params: 0, #flops: 54K
+        )
+      )
+      (box_predictor): FastRCNNOutputLayers(
+        #params: 1.21K, #flops: 36K
+        (cls_score): Linear(
+          in_features=200, out_features=2, bias=True
+          #params: 0.4K, #flops: 12K
+        )
+        (bbox_pred): Linear(
+          in_features=200, out_features=4, bias=True
+          #params: 0.8K, #flops: 24K
+        )
+      )
+    )
+  )
+)
