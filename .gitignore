@@ -134,4 +134,7 @@ dmypy.json
 *.DS_Store
 version.py
 
+.github
+.gitignore
+
 
